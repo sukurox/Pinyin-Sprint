@@ -2,6 +2,8 @@
 
 A small Monkeytype-inspired typing prototype for practicing Chinese recognition and pinyin typing at the same time.
 
+(Sorry, I’m an absolute novice at coding — and yes, I know absolutely nothing about what I’m doing, lol)
+
 ## Run
 
 Open [index.html](C:\Users\Robin Wu\Documents\New project\index.html) in a browser.
