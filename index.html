@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pinyin Sprint</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand-lockup">
+        <p class="eyebrow">Chinese x typing practice</p>
+        <h1>Pinyin Sprint</h1>
+      </div>
+
+      <button class="ghost-button" id="restartButton" type="button">Restart</button>
+    </header>
+
+    <main class="workspace">
+      <section class="control-strip" aria-label="Challenge settings">
+        <div class="control-group">
+          <span class="control-label">Mode</span>
+          <div class="segmented" id="modeButtons">
+            <button type="button" class="chip active" data-mode="words">Words</button>
+            <button type="button" class="chip" data-mode="time">Time</button>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <span class="control-label">Goal</span>
+          <div class="segmented" id="goalButtons"></div>
+        </div>
+
+        <div class="control-group">
+          <span class="control-label">Deck</span>
+          <div class="segmented" id="deckButtons">
+            <button type="button" class="chip active" data-deck="mixed">Mixed</button>
+            <button type="button" class="chip" data-deck="core">Core</button>
+            <button type="button" class="chip" data-deck="common">Common</button>
+            <button type="button" class="chip" data-deck="chars">Chars</button>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <span class="control-label">Guide</span>
+          <div class="segmented" id="guideButtons">
+            <button type="button" class="chip active" data-guide="show">Show</button>
+            <button type="button" class="chip" data-guide="hide">Hide </button>
+          </div>
+        </div>
+      </section>
+
+      <section class="scoreboard" aria-label="Live performance stats">
+        <article>
+          <span class="metric-label">Accuracy</span>
+          <strong id="accuracyMetric">100%</strong>
+        </article>
+        <article>
+          <span class="metric-label">Latin WPM</span>
+          <strong id="wpmMetric">0</strong>
+        </article>
+        <article>
+          <span class="metric-label">Hanzi/min</span>
+          <strong id="hanziMetric">0</strong>
+        </article>
+        <article>
+          <span class="metric-label">Streak</span>
+          <strong id="streakMetric">0</strong>
+        </article>
+        <article>
+          <span class="metric-label" id="paceLabel">Words Left</span>
+          <strong id="paceMetric">15</strong>
+        </article>
+      </section>
+
+      <section class="stage" id="stage">
+        <div class="stage-copy">
+          <p class="stage-kicker" id="deckLabel">mixed deck</p>
+          <h2 class="hanzi-line" id="hanziLine">点击这里开始，或者直接开始打字</h2>
+          <div class="pinyin-line" id="pinyinLine" aria-live="polite"></div>
+          <p class="translation-line" id="translationLine">Click anywhere or start typing to begin.</p>
+        </div>
+
+        <div class="upcoming">
+          <span class="upcoming-label">Queue</span>
+          <div class="upcoming-track" id="queueLine"></div>
+        </div>
+      </section>
+
+      <section class="bottom-row">
+        <div class="status-copy">
+          <p id="statusLine">Strict mode: wrong keys count against accuracy and do not advance the phrase.</p>
+          <p class="shortcut-line">Shortcuts: <kbd>Esc</kbd> restart, <kbd>Tab</kbd> toggle guide.</p>
+        </div>
+
+        <div class="best-block">
+          <span class="best-label">Session best</span>
+          <strong id="bestMetric">No run yet</strong>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <input
+    id="typingCapture"
+    class="typing-capture"
+    type="text"
+    autocomplete="off"
+    autocorrect="off"
+    autocapitalize="none"
+    spellcheck="false"
+    inputmode="latin"
+    aria-label="Typing capture input"
+  >
+
+  <div class="result-panel hidden" id="resultPanel" aria-live="polite">
+    <div class="result-card">
+      <p class="eyebrow">Run complete</p>
+      <h3 id="resultHeadline">You finished the set.</h3>
+      <div class="result-grid">
+        <article>
+          <span>Accuracy</span>
+          <strong id="resultAccuracy">100%</strong>
+        </article>
+        <article>
+          <span>Latin WPM</span>
+          <strong id="resultWpm">0</strong>
+        </article>
+        <article>
+          <span>Hanzi/min</span>
+          <strong id="resultHanzi">0</strong>
+        </article>
+        <article>
+          <span>Longest streak</span>
+          <strong id="resultStreak">0</strong>
+        </article>
+      </div>
+      <button class="primary-button" id="runAgainButton" type="button">Run it again</button>
+    </div>
+  </div>
+
+  <script src="generated-data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
